@@ -2,8 +2,8 @@
 
 # Variables
 cluster_name="cluster-1-test"
-region="REGION" #Make sure it is the same in the terraform variables
-aws_id="AWS_ID"
+region="eu-west-3" #Make sure it is the same in the terraform variables
+aws_id="905418097745"
 repo_name="nodejs-app" # If you wanna change the repository name make sure you change it in the k8s/app.yml (Image name) 
 image_name="$aws_id.dkr.ecr.$region.amazonaws.com/$repo_name:latest"
 domain="YOUR_DOMAIN"

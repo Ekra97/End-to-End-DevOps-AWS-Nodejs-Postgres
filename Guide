@@ -1,0 +1,64 @@
+#via_docker
+#debug
+sudo systemctl restart docker 
+sudo systemctl status  docker
+#build & run 
+sudo docker build -t mynpmproject .
+sudo docker images
+sudo docker run -d --name mynpmcontainer --rm -p 8000:8000 --net="host" mynpmproject #OPTIONS//-it --rm
+sudo docker ps -a #OPTIONS//--filter "status=exited" --filter "status=created"
+
+
+sudo docker stop "containersname or ID" 
+sudo docker rmi "imageID" #delete image(s) 
+docker inspect mynpmcontainer
+curl http://localhost:8000 #check is the app is running 
+sudo docker networks ls 
+_________________________________________________________________________________________________________
+#viadocker-compose 
+sudo docker-compose up 
+vi docker-compose.yml
+vi Dockerfile
+udo docker ps -a 
+sudo docker exec -it mycontainerid sh
+lsof -i :5432
+sudo docker-compose down 
+sudo fuser -k 5432/tcp 
+
+__________________________________________________________________________________________________________
+#POSTGRES 
+sudo service postgresql status
+ss -nlt | grep 5432
+sudo -u postgres psql #connect to postgres via psql 
+psql --host=xx.xxx.xxx.xxx  --port=5432 --username=postgres --password
+ostgres --version
+psql --version 
+ps -ef | grep psql 
+sudo systemctl stop postgresql 
+sudo systemctl restart postgresql
+sudo systemctl status postgresql
+ps -ef | grep psql 
+ps -ef | grep postgres
+cat /etc/postgresql/16/main/postgresql.conf
+vi /etc/postgresql/16/main/postgresql.conf ( change the listen adress to "*")
+
+#if you cannot do the docker-compose up and the error is another process is using the port 
+sudo lsof -i :5432 #which port is using the process ?? 
+sudo kill -9 <PID>
+___________________________________
+#minikube
+minikube start --driver=docker 
+cd k9s #??? idk yet 
+kubectl get po -A
+kubectl get ns 
+kubectl get secret -A  #kubectl delete -n namespace name
+kubectl apply -n namespacename -f 
+kubectl describe  po podname -n namespace
+kubectl create secret generic <secret-name> --from-literal=<key1>=<value1> --from-literal=<key2>=<value2> -n bmeespace  #checkseretrefkey in your manifest files 
+kubectl get secret my-secret -o jsonpath='{.data.db-password}' | base64 --decode
+kubectl get deployement 
+minikube service -n namespace nameofservice --url 
+
+#kubectl get svc -n namespacename nameofservice --url 
+kubectl get pvc -A 
+kubectl delete -n namespace -f fullpath 
