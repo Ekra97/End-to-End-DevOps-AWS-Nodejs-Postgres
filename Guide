@@ -48,6 +48,8 @@ sudo kill -9 <PID>
 ___________________________________
 #minikube
 minikube start --driver=docker 
+kubectl create ns nodejs-app 
+
 cd k9s #??? idk yet 
 kubectl get po -A
 kubectl get ns 
@@ -61,4 +63,15 @@ minikube service -n namespace nameofservice --url
 
 #kubectl get svc -n namespacename nameofservice --url 
 kubectl get pvc -A 
+kubectl edit deploy nodejs-app-deploy -n nodejs-app
+kubectl scale deploy nodejs-app-deploy -n nodejs-app --replicas=2
+kubectl exec -it postgres-585774f8d9-pmk5r -n nodejs-app  sh
+su - postgres
+ls 
+pwd 
+psql 
+
+
+
+
 kubectl delete -n namespace -f fullpath 
