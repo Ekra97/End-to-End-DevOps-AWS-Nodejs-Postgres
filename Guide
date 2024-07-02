@@ -30,7 +30,7 @@ ________________________________________________________________________________
 sudo service postgresql status
 ss -nlt | grep 5432
 sudo -u postgres psql #connect to postgres via psql 
-psql --host=xx.xxx.xxx.xxx  --port=5432 --username=postgres --password
+psql --host=xx.xxx.xxx.xxx  --port=5432(le nouveau port)  --username=postgres --password
 ostgres --version
 psql --version 
 ps -ef | grep psql 
