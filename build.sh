@@ -3,7 +3,7 @@
 # Variables
 cluster_name="cluster-1-test"
 region="eu-west-3" #Make sure it is the same in the terraform variables
-aws_id="your id"
+aws_id="686591753714"
 repo_name="nodejs-app" # If you wanna change the repository name make sure you change it in the k8s/app.yml (Image name) 
 image_name="$aws_id.dkr.ecr.$region.amazonaws.com/$repo_name:latest"
 domain="karimdevops.com"
@@ -39,7 +39,7 @@ docker build -t $image_name .
 
 #ECR Login
 echo "--------------------Login to ECR--------------------"
-aws ecr get-login-password --region $region | docker login --username AWS --password-stdin $aws_id.dkr.ecr.eu-central-1.amazonaws.com
+aws ecr get-login-password --region $region | docker login --username AWS --password-stdin $aws_id.dkr.ecr.eu-west-3.amazonaws.com
 
 # push the latest build to dockerhub
 echo "--------------------Pushing Docker Image--------------------"

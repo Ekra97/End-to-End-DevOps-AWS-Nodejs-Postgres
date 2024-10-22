@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Variables
+#REGION="eu-west-3" #Make sure it is the same in the terraform variables
+#REPOSITORY_NAME="nodejs-app" # If you wanna change the repository name make sure you change it in the k8s/app.yml (Image name) 
+
 aws ecr list-images --repository-name $REPOSITORY_NAME --region $REGION --query 'imageIds[*]' --output json | \
 jq -r '.[] | @base64' | \
 while read -r image_id_base64; do
