@@ -72,7 +72,7 @@ echo " "
 echo " "
 echo "--------------------Application URL--------------------"
 echo "http://nodejs.$domain"
-
+#editandcommit 
 echo "--------------------Alertmanager URL--------------------"
 echo "http://alertmanager.$domain"
 echo " "
